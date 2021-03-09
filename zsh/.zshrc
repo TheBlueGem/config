@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+#export go
+export PATH=$PATH:/usr/local/go/bin
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jesse/.oh-my-zsh"
 
@@ -36,7 +39,7 @@ export UPDATE_ZSH_DAYS=28
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -95,18 +98,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# set vim as terminal editor
-set -o vi
-
 # set custom keybindings
 xbindkeys --poll-rc
 
-# Grandvision token
-export NPM_TOKEN=26e92497-8842-43b8-b350-f815153f1fef
+# set Compose key
+xmodmap -e "keycode 108 = Alt_R"
+xmodmap -e "keysym Alt_R = Multi_key"
 
-# Dev-system envs
-export DEV_BASE_DIR="~/Documents/Projects/Grandvision"
-export API_BASE_URL="http://api.local:3080"
+# NPM (placeholder)
+export NPM_TOKEN=blaat
 
 # nvm not MVN GDDMT
 export NVM_DIR="$HOME/.nvm"
@@ -114,15 +114,27 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Java
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"
+#export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
 
 # Maven
 export PATH=$PATH:$HOME/apache-maven-3.6.2/bin
 
+# Brightness
+function setbrightness(){
+  xrandr --output eDP-1-1 --brightness $1
+}
+
+# History
+export HISTSIZE=1000000
+export SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
 alias i3exit='sh /home/jesse/.i3exit'
 alias lock='i3exit lock'
 alias shutdown='i3exit shutdown'
-alias restart='i3exit reboot'
+#alias restart='i3exit reboot'
 alias vim='vi'
 alias gr='git remote -v'
 alias gc='git checkout'
@@ -132,3 +144,10 @@ alias showNetworks='nmcli d wifi list'
 alias monitors='polybar -m'
 alias updatepackages='sudo apt-get update && sudo apt-get dist-upgrade'
 alias connectnextscreen='xrandr --output HDMI-1-1 --mode 3440x1440 --right-of eDP-1-1 && i3-msg restart'
+alias ms='mysqlsh'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/jesse/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jesse/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/jesse/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jesse/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
