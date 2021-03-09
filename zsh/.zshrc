@@ -105,9 +105,6 @@ xbindkeys --poll-rc
 xmodmap -e "keycode 108 = Alt_R"
 xmodmap -e "keysym Alt_R = Multi_key"
 
-# NPM (placeholder)
-export NPM_TOKEN=blaat
-
 # nvm not MVN GDDMT
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -145,6 +142,7 @@ alias monitors='polybar -m'
 alias updatepackages='sudo apt-get update && sudo apt-get dist-upgrade'
 alias connectnextscreen='xrandr --output HDMI-1-1 --mode 3440x1440 --right-of eDP-1-1 && i3-msg restart'
 alias ms='mysqlsh'
+alias restartpolybar='nohup $HOME/bin/polybar/launch.sh &'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/jesse/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jesse/Downloads/google-cloud-sdk/path.zsh.inc'; fi
