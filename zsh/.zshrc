@@ -128,6 +128,9 @@ export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
+# Wifi connect script
+export WIFI_CONNECT_SCRIPT='/home/jesse/Documents/Projects/config/zsh/wifi_connect_secureish.sh'
+
 alias i3exit='sh /home/jesse/.i3exit'
 alias lock='i3exit lock'
 alias shutdown='i3exit shutdown'
@@ -135,9 +138,10 @@ alias shutdown='i3exit shutdown'
 alias vim='vi'
 alias gr='git remote -v'
 alias gc='git checkout'
-alias wificonnect='nmcli d wifi connect'
-alias wifidisconnect='nmcli d wifi disconnect'
+alias wificonnect='wifi_connect_secureish.sh'
+alias wifidisconnect='nmcli c down'
 alias showNetworks='nmcli d wifi list'
+alias showKnownNetworks='nmcli c'
 alias monitors='polybar -m'
 alias updatepackages='sudo apt-get update && sudo apt-get dist-upgrade'
 alias connectnextscreen='xrandr --output HDMI-1-1 --mode 3440x1440 --right-of eDP-1-1 && i3-msg restart'
